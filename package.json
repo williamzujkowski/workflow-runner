@@ -1,14 +1,29 @@
 {
   "name": "workflow-runner",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Workflow template E2E exerciser — chains list_workflows, run_graph_workflow, query_trace MCP tools",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamzujkowski/workflow-runner.git"
+  },
+  "keywords": ["workflow", "graph", "mcp", "nexus-agents", "e2e-test"],
+  "engines": { "node": ">=22" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "files": ["dist", "src", "README.md"],
   "scripts": {
+    "build": "tsc",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "live": "NEXUS_LIVE=true tsx src/run-live.ts"
   },
   "devDependencies": {
+    "tsx": "^4.19.0",
     "typescript": "^5.9.0",
     "vitest": "^3.2.0",
     "zod": "^3.24.0"
