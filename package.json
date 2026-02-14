@@ -1,0 +1,16 @@
+{
+  "name": "workflow-runner",
+  "version": "1.0.0",
+  "description": "Workflow template E2E exerciser — chains list_workflows, run_graph_workflow, query_trace MCP tools",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "zod": "^3.24.0"
+  }
+}
