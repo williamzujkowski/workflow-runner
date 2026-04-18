@@ -108,6 +108,50 @@ export const QueryTraceResponseSchema = z.object({
 export type QueryTraceResponse = z.infer<typeof QueryTraceResponseSchema>;
 
 // ============================================================================
+// run_workflow
+// ============================================================================
+
+export const RunWorkflowInputSchema = z.object({
+  template: z.string().min(1),
+  inputs: z.record(z.string().max(100), z.unknown()),
+  dryRun: z.boolean().optional(),
+});
+
+export type RunWorkflowInput = z.infer<typeof RunWorkflowInputSchema>;
+
+const StepResultSummarySchema = z.object({
+  stepId: z.string(),
+  status: z.enum(['success', 'failed', 'skipped']),
+  durationMs: z.number(),
+  error: z.string().optional(),
+});
+
+export type StepResultSummary = z.infer<typeof StepResultSummarySchema>;
+
+export const RunWorkflowResponseSchema = z.object({
+  executionId: z.string(),
+  workflowName: z.string(),
+  status: z.enum(['completed', 'failed']),
+  stepResults: z.array(StepResultSummarySchema),
+  output: z.unknown(),
+  durationMs: z.number(),
+});
+
+export type RunWorkflowResponse = z.infer<typeof RunWorkflowResponseSchema>;
+
+export const RunWorkflowDryRunSchema = z.object({
+  valid: z.boolean(),
+  workflowName: z.string(),
+  stepCount: z.number(),
+  inputsProvided: z.array(z.string()),
+  inputsRequired: z.array(z.string()),
+  inputsMissing: z.array(z.string()),
+  validationErrors: z.array(z.string()),
+});
+
+export type RunWorkflowDryRun = z.infer<typeof RunWorkflowDryRunSchema>;
+
+// ============================================================================
 // Runner types
 // ============================================================================
 

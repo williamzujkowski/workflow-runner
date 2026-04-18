@@ -30,6 +30,10 @@ export type {
   WorkflowRunResult,
   RunnerReport,
   RunnerConfig,
+  RunWorkflowInput,
+  RunWorkflowResponse,
+  RunWorkflowDryRun,
+  StepResultSummary,
 } from './types.js';
 export {
   ListWorkflowsInputSchema,
@@ -39,4 +43,7 @@ export {
   GraphWorkflowListSchema,
   QueryTraceInputSchema,
   QueryTraceResponseSchema,
+  RunWorkflowInputSchema,
+  RunWorkflowResponseSchema,
+  RunWorkflowDryRunSchema,
 } from './types.js';
